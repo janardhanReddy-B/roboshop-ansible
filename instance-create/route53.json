@@ -5,7 +5,7 @@
     "ResourceRecordSet": {
       "Name": "COMPONENT.roboshop.internal",
       "Type": "A",
-      "TTL": 30,
+      "TTL": 300,
       "ResourceRecords": [{ "Value": "IPADDRESS"}]
     }}]
 }

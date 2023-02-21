@@ -1,4 +1,4 @@
--name: create user
+- name: create user
   ansible.builtin.user:
     name: roboshop
 

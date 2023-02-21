@@ -6,7 +6,7 @@
 
 - name: Remove directory
   ansible.builtin.file:
-    path: "{{APP LOCATION}}"
+    path: "{{ APP_LOCATION }}"
     state: absent
 
 - name: Copy {{ COMPONENT }} Code to App Location

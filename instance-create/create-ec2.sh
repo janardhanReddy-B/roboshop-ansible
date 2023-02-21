@@ -16,7 +16,7 @@
  if [ $? -eq 0 ]; then
    echo "Instance Already exists"
  else
-  AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" --output table  | grep ImageId | awk '{print $4}')
+  AMI_ID=ami-06c286216c69df7a8
   aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" --tag-specifications "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${NAME}}]" "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" --security-group-ids sg-032093c293a641723 &>/dev/null
   echo EC2 Instance Created
   sleep 30

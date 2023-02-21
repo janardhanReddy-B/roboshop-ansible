@@ -1,0 +1,4 @@
+- name: Run roboshop Compoments from the roles
+  hosts: "{{HOST}}"
+  roles:
+    - "{{ROLE}}"

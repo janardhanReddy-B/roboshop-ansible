@@ -2,7 +2,7 @@
 ##### Change these values ###
 ZONE_ID="Z080600234ZUEKDP4RGN8"
 SG_NAME="allow all"
-IAM_INSTANCE_PROFILE="arn:aws:iam::637261222008:role/Admin_role_roboshop/role-for-secret-manager-for-roboshop-components"
+IAM_INSTANCE_PROFILE="arn:aws:iam::637261222008:role/Admin_role_roboshop"
 #############################
 
 if [ -z "${1}" ] ; then

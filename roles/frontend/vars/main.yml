@@ -1,1 +1,3 @@
 COMPONENT: frontend
+APP LOCATION: /usr/share/nginx/html
+SUFFIX: static/

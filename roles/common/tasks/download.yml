@@ -1,1 +1,16 @@
 - name: download and unzip the file
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Remove directory
+  ansible.builtin.file:
+    path: "{{APP LOCATION}}"
+    state: absent
+
+- name: Copy {{ COMPONENT }} Code to App Location
+  ansible.builtin.copy:
+    src: /tmp/{{COMPONENT}}-main/{{SUFFIX}}
+    dest: "{{ APP_LOCATION }}/"
+    remote_src: yes

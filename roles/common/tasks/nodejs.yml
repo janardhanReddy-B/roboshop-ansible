@@ -1,0 +1,25 @@
+- name: setup yum repos
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
+
+- name: Install the nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: include from the common
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+
+- name: downloading npm dependicices
+  community.general.npm:
+    path: "{{ APP_LOCATION }}"
+
+- name: include from the common
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd
+
+
+

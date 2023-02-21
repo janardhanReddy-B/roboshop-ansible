@@ -1,0 +1,11 @@
+- name: Copy RoboShop Config file
+  ansible.builtin.template:
+    src: systemd.service
+    dest: /etc/systemd/system/{{ COMPONENT }}.service
+
+- name: start {{ COMPONENT }} service
+  ansible.builtin.systemd:
+    name: "{{ COMPONENT }}"
+    state: restarted
+    enabled: yes
+    deamon_reload: yes

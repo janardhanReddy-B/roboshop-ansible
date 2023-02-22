@@ -1,0 +1,3 @@
+COMPONENT: rabbitmq
+APP_LOCATION: /home/roboshop/rabbitmq
+SUFFIX: /

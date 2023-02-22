@@ -1,0 +1,66 @@
+- name: fail if the password of MYSQL_PASSWORD does not exist
+  ansible.builtin.fail:
+    msg: MSQL_PASSWORD variable is missing
+  when: MYSQL_PASSWORD is undefined
+
+- name: copy yum repo for mysql
+  ansible.builtin.template:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: install MYSQL
+  ansible.builtin.yum:
+    name:
+      - mysql-community-server
+      - mySQL-python
+    state: installed
+
+- name: start mySQL service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: started
+    enabled: yes
+
+- name: fetch log file
+  ansible.builtin.slurp:
+    src: /var/log/mysqld.log
+  register: mysql_log
+
+- name: Fetch Password from MySQL LOG File
+  ansible.builtin.set_fact:
+    DEFAULT_PASSWORD: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ')| split(' ') | last}}"
+
+- name: Check MySQL Password has been reset or not
+  community.mysql.mysql_info:
+    login_user: root
+    login_password: "{{MYSQL_PASSWORD}}"
+    filter: version
+  ignore_errors: yes
+  register: mysql_conn
+
+- name: Reset MySQL Password
+  ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{MYSQL_PASSWORD}}';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASSWORD}}"
+  when: mysql_conn is failed
+
+- name: Check Validate Password Plugins
+  ansible.builtin.shell: echo show plugins  | mysql -uroot -p"{{MYSQL_PASSWORD}}" | grep validate_password
+  register: plugin_info
+  ignore_errors: yes
+
+- name: Remove Validate Password Plugin
+  ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -p"{{MYSQL_PASSWORD}}"
+  when: plugin_info is succeeded
+
+- name: Download & Extract {{ COMPONENT }} Component Archive
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Load Schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /tmp/mysql-main/shipping.sql
+    login_user: root
+    login_password: "{{MYSQL_PASSWORD}}"

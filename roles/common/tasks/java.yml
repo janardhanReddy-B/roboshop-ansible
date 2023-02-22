@@ -13,7 +13,7 @@
   args:
     chdir: /home/roboshop/shipping
 
-- name: include from the common
+- name: setup {{ COMPONENT }} systemd service
   ansible.builtin.include_role:
     name: common
     tasks_from: systemd

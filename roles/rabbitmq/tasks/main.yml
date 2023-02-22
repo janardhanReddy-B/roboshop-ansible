@@ -4,7 +4,7 @@
   when: RABBITMQ_USER_PASSWORD  is undefined
 
 - name: setup rabbitmq repo
-  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
 
 - name: install rabbitmq and erlang
   ansible.builtin.yum:

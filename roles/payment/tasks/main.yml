@@ -1,0 +1,9 @@
+- name: fail if the password of RABBITMQ_USER_PASSWORD does not exist
+  ansible.builtin.fail:
+    msg: RABBITMQ_USER_PASSWORD  variable is missing
+  when: RABBITMQ_USER_PASSWORD  is undefined
+
+- name: include role from the common
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: python

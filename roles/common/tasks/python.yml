@@ -1,0 +1,31 @@
+- name: Install Python
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Import Common App Setup Configurations
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+- name: Install Python Dependencies
+  ansible.builtin.pip:
+    requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
+    executable: pip3
+
+- name: Update UID and GID in Application Configuration
+  ansible.builtin.lineinfile:
+    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^{{item.key}}'
+    line: "{{item.line}}"
+  loop:
+    - {key: "uid", line: "uid = {{app_user.uid}}"}
+    - {key: "gid", line: "gid = {{app_user.group}}"}
+
+- name: SystemD Setup for {{ COMPONENT }} Service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd

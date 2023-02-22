@@ -1,0 +1,19 @@
+- name: install maveen
+  ansible.builtin.yum:
+    name: maven
+    state: installed
+
+- name: include app setup from the common
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+- name: run maven depencies
+  ansible.builtin.shell: mvn clean package &&  mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+  args:
+    chdir: /home/roboshop/shipping
+
+- name: include from the common
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd

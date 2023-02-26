@@ -1,3 +1,4 @@
 COMPONENT: mysql
 APP_LOCATION: /home/roboshop/mysql
 SUFFIX: /
+MYSQL_PASSWORD: "{{SECRETS.MYSQL_PASSWORD}}"

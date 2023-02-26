@@ -1,7 +1,7 @@
 - name: set hostname
   ansible.builtin.shell: set-hostname {{ COMPONENT }}
 
-- name: install botocore and boto3 for ansible pull
+- name: install python modules for aws secret manager
   ansible.builtin.pip:
     name:
       - boto3

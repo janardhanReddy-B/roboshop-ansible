@@ -1,2 +1,9 @@
 - name: set hostname
   ansible.builtin.shell: set-hostname {{ COMPONENT }}
+
+- name: install botocore and boto3 for ansible pull
+  ansible.builtin.pip:
+    name:
+      - boto3
+      - botocore
+    executable: pip3

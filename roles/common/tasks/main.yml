@@ -6,4 +6,5 @@
     name:
       - boto3
       - botocore
+      - MySQL-python
     executable: pip3

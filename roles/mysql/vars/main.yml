@@ -1,5 +1,3 @@
 COMPONENT: mysql
 APP_LOCATION: /home/roboshop/mysql
 SUFFIX: /
-MYSQL_PASSWORD: "{{SECRETS.MYSQL_PASSWORD}}"
-SECRETS: "{{ lookup('amazon.aws.aws_secret', 'roboshop/all', region='us-east-1')}}"

@@ -1,6 +1,6 @@
 - name: fail if the password of MYSQL_PASSWORD does not exist
   ansible.builtin.fail:
-    msg: MSQL_PASSWORD variable is missing
+    msg: MYSQL_PASSWORD variable is missing
   when: MYSQL_PASSWORD is undefined
 
 - name: copy yum repo for mysql

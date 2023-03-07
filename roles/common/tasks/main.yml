@@ -6,5 +6,4 @@
     name:
       - boto3
       - botocore
-
     executable: pip3

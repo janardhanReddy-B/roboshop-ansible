@@ -39,7 +39,7 @@
 ##### Change these values ###
 ZONE_ID="Z08351461XBOFH93FVJTZ"
 SG_NAME="allow-all"
-IAM_INSTANCE_PROFILE="arn:aws:iam::637261222008:instance-profile/full"
+IAM_INSTANCE_PROFILE="Arn=arn:aws:iam::637261222008:instance-profile/full"
 #############################
 
 if [ -z "${1}" ] ; then

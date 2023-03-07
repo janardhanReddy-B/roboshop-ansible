@@ -11,10 +11,10 @@
     name: common
     tasks_from: download
 
-
-- name: downloading npm dependicices
-  community.general.npm:
-    path: "{{ APP_LOCATION }}"
+# these steps are coming from CI steps
+#- name: downloading npm dependicices
+#  community.general.npm:
+#    path: "{{ APP_LOCATION }}"
 
 - name: setup {{ COMPONENT }} systemd service
   ansible.builtin.include_role:

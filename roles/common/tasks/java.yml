@@ -8,10 +8,11 @@
     name: common
     tasks_from: download
 
-- name: run maven depencies
-  ansible.builtin.shell: mvn clean package &&  mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
-  args:
-    chdir: /home/roboshop/shipping
+# these steps are coming from the CI steps
+#- name: run maven depencies
+#  ansible.builtin.shell: mvn clean package &&  mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+#  args:
+#    chdir: /home/roboshop/shipping
 
 - name: setup {{ COMPONENT }} systemd service
   ansible.builtin.include_role:

@@ -6,4 +6,5 @@
     name:
       - boto3
       - botocore
+      - python3-dnf
     executable: pip3

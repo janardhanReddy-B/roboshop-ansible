@@ -18,7 +18,9 @@
 
 - name: Install Redis
   ansible.builtin.dnf:
-    name: redis
+    name:
+      - redis
+      - python3-dnf
     state: installed
     disable_gpg_check: yes
 

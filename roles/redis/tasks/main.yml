@@ -5,8 +5,8 @@
 
 - name: Install the redis
   ansible.builtin.yum:
-    name: redis-6.2
-    state: latest
+    name: redis-6.2.6
+    state: installed
 
 - name: replace listening ip address
   ansible.builtin.replace:

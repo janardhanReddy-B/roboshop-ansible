@@ -20,7 +20,6 @@
   ansible.builtin.dnf:
     name:
       - redis
-      - python3-dnf
     state: installed
     disable_gpg_check: yes
 

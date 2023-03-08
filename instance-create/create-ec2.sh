@@ -28,14 +28,8 @@
 # sed -e "s/COMPONENT/${NAME}/" -e "s/IPADDRESS/${IPADDRESS}/" route53.json >/tmp/route53.json
 # aws route53 change-resource-record-sets --hosted-zone-id Z08351461XBOFH93FVJTZ --change-batch file:///tmp/route53.json &>/dev/null
 # echo DNS Record Created
-#
-#
-#
-#
-#
-#
-#!/bin/bash
 
+#!/bin/bash
 ##### Change these values ###
 ZONE_ID="Z08351461XBOFH93FVJTZ"
 SG_NAME="allow-all"

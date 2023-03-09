@@ -1,0 +1,4 @@
+- name: Prometheus Server Configuration
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /opt/prometheus/prometheus.yml

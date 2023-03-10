@@ -7,3 +7,10 @@
   ansible.builtin.systemd:
     name: prometheus
     state: restarted
+
+- name: Check Prometheus port is open or not
+  ansible.builtin.wait_for:
+    host: 0.0.0.0
+    port: 8000
+    delay: 10
+    timeout: 15

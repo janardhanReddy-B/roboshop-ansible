@@ -15,6 +15,12 @@ rule_files:
 
 
 scrape_configs:
-  - job_name: "prometheus"
-    static_configs:
-      - targets: ["172.31.2.152:9100"]
+  - job_name: "roboshop nodes"
+    ec2_sd_configs:
+      - region: us-east-1
+        port: 9100
+        filters:
+          - name: "tag:Monitor"
+            valuses: ["yes"]
+
+

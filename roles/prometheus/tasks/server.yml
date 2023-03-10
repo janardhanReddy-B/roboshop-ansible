@@ -11,6 +11,6 @@
 - name: Check Prometheus port is open or not
   ansible.builtin.wait_for:
     host: 0.0.0.0
-    port: 8000
+    port: 9090
     delay: 10
     timeout: 15

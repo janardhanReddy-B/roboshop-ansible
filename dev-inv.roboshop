@@ -18,3 +18,5 @@ mongodb-dev.roboshop.internal
 redis-dev.roboshop.internal
 [RABBITMQ]
 rabbitmq-dev.roboshop.internal
+[redis]
+redis.roboshop.internal

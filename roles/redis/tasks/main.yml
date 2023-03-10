@@ -8,22 +8,6 @@
     name: redis-6.2.11
     state: installed
 
-#- name: Configure Redis YUM repos
-#  ansible.builtin.dnf:
-#    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-#    state: installed
-#    disable_gpg_check: yes
-#
-#- name: Configure Redis 6.2
-#  ansible.builtin.shell: dnf module enable redis:remi-6.2 -y
-#
-#- name: Install Redis
-#  ansible.builtin.dnf:
-#    name:
-#      - redis
-#    state: installed
-#    disable_gpg_check: yes
-
 - name: replace listening ip address
   ansible.builtin.replace:
     path: "{{item}}"

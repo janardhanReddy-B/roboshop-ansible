@@ -18,5 +18,3 @@ mongodb-dev.roboshop.internal
 redis-dev.roboshop.internal
 [RABBITMQ]
 rabbitmq-dev.roboshop.internal
-[redis]
-172.31.24.6

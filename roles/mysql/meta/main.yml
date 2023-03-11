@@ -1,2 +1,5 @@
 dependencies:
-     - role: common
+  - role: common
+  - role: prometheus
+    vars:
+      SETUP_TYPE: client

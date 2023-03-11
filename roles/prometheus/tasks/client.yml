@@ -1,0 +1,3 @@
+- name: Install node Exporter in nodes
+  ansible.builtin.shell: labauto clean; labauto prometheus-node-exporter
+

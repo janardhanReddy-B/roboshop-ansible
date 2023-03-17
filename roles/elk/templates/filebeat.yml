@@ -2,14 +2,15 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /var/log/cart.log
+    - /var/log/{{COMPONENT}}.log
 
 output.elasticsearch:
-  hosts: ["172.31.19.133:9200"]
+  index: "{{COMPONENT}}"
+  hosts: ["elasticsearch.roboshop.internal:9200"]
 
-#-------------------------------
+# --------------------------
 filebeat.config.modules:
-  path: ${path.config}/modules.d/*.ym
+  path: ${path.config}/modules.d/*.yml
   reload.enabled: false
 setup.template.settings:
   index.number_of_shards: 1
@@ -21,6 +22,6 @@ processors:
   - add_docker_metadata: ~
   - add_kubernetes_metadata: ~
 
-output.elasticsearch.index: "{{COMPONENT}}"
-SETUP.TEMPLATE.NAME: "{{COMPONENT}}"
+setup.ilm.enabled: false
+setup.template.name: "{{COMPONENT}}"
 setup.template.pattern: "{{COMPONENT}}"

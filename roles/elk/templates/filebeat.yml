@@ -1,11 +1,13 @@
 filebeat.inputs:
-- type: files
+- type: log
   enabled: true
   paths:
     - /var/log/{{COMPONENT}}.log
 
 output.elasticsearch:
+  index: "{{COMPONENT}}"
   hosts: ["elasticsearch.roboshop.internal:9200"]
+
 #-------------------------------
 filebeat.config.modules:
   path: ${path.config}/modules.d/*.ym
@@ -20,3 +22,6 @@ processors:
   - add_docker_metadata: ~
   - add_kubernetes_metadata: ~
 
+output.elasticsearch.index: "{{COMPONENT}}"
+SETUP.TEMPLATE.NAME: "{{COMPONENT}}"
+setup.template.pattern: "{{COMPONENT}}"

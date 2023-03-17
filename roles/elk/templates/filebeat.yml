@@ -2,7 +2,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /var/log/{{COMPONENT}}.log
+    - /var/log/cart.log
 
 output.elasticsearch:
   hosts: ["172.31.19.133:9200"]

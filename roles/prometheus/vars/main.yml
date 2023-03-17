@@ -1,0 +1,1 @@
+components: ["nginx", "cart", "user", "catalogue", "payment", "shipping"]

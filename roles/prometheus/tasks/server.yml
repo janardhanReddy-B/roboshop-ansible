@@ -20,7 +20,7 @@
     delay: 10
     timeout: 15
 
-- name: Prometheus Server Configuration
+- name: Prometheus alertmanager Configuration
   ansible.builtin.template:
     src: alertmanager.yml
     dest: /opt/alertmanager/alertmanager.yml
